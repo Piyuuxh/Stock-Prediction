@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictor Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Stock Predictor</h1>
+        <p>Enter a stock ticker symbol below to analyze its performance and get predictions for the future.</p>
+        
+        <form method="POST" class="stock-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="ticker">Stock Ticker:</label>
+                <input type="text" name="ticker" id="ticker" required placeholder="e.g., AAPL" />
+            </div>
+            <button type="submit" class="btn">Analyze Stock</button>
+        </form>
+
+        <h2>Previous Analysis</h2>
+        <div class="result-item">
+            <span>Latest Ticker:</span>
+            <span>AAPL</span>
+        </div>
+        <div class="result-item">
+            <span>Last Predicted Price:</span>
+            <span>$150.00</span>
+        </div>
+    </div>
+</body>
+</html>

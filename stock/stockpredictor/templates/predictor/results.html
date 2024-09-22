@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictor Results</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 28px;
+            color: #2C3E50;
+            margin-bottom: 30px;
+        }
+
+        /* Result Block */
+        .result-block {
+            background-color: #f3f4f6;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-block p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .result-block strong {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .result-block span {
+            color: #2C3E50;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            background-color: #2980B9;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3498DB;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+        }
+
+        /* Additional Styling */
+        .result-block p {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .result-block p:last-child {
+            border-bottom: none;
+        }
+
+        .result-block p span {
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .btn-secondary:focus,
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis for {{ ticker }}</h1>
+
+        <div class="result-block">
+            <p><strong>Current Price:</strong> <span>${{ current_price }}</span></p>
+            <p><strong>Predicted Price (30 days):</strong> <span>${{ predicted_price }}</span></p>
+            <p><strong>50-day Moving Average:</strong> <span>${{ ma50 }}</span></p>
+            <p><strong>200-day Moving Average:</strong> <span>${{ ma200 }}</span></p>
+            <p><strong>Trend:</strong> <span>{{ trend }}</span></p>
+            <p><strong>Prediction:</strong> <span>Stock may {{ prediction }}</span></p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{% url 'home' %}" class="btn-secondary">Analyze Another Stock</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Stock Predictor. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
